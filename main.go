@@ -9,6 +9,7 @@ import (
 	cv "github.com/hybridgroup/go-opencv/opencv"
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot-ardrone"
+	"github.com/hybridgroup/gobot-opencv"
 )
 
 func main() {
@@ -59,7 +60,8 @@ func main() {
 						}
 					}
 					if face != nil {
-						gobotOpencv.DrawRectangles(i, []*cv.Rect{face})
+						//FIXME: last 4 args are unknown
+						gobotOpencv.DrawRectangles(i, []*cv.Rect{face}, 1, 1, 1, 1)
 						center_x := float64(image.Width()) * 0.5
 						turn := -(float64(face.X()) - center_x) / center_x
 						fmt.Println("turning:", turn)
